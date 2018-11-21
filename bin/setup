@@ -1,0 +1,25 @@
+#! /bin/bash
+
+echo "----------------------------------------------------------"
+echo "Setting up Postgres DB..."
+echo "----------------------------------------------------------"
+
+# CREATE EXTENSION postgis;
+
+psql postgres <<EOF
+  CREATE USER samlinks WITH PASSWORD 'samlinks';
+
+  ALTER ROLE samlinks SET client_encoding TO 'utf8';
+
+  ALTER ROLE samlinks SET default_transaction_isolation TO 'read committed';
+
+  ALTER ROLE samlinks SET timezone TO 'UTC';
+
+  ALTER USER samlinks WITH SUPERUSER;
+EOF
+
+echo "----------------------------------------------------------"
+echo "Setup complete!"
+echo "----------------------------------------------------------"
+
+echo "Run the web server with mix phx.server, and view http://localhost:4000"
