@@ -21,5 +21,3 @@ EOF
 echo "----------------------------------------------------------"
 echo "Setup complete!"
 echo "----------------------------------------------------------"
-
-echo "Run the web server with mix phx.server, and view http://localhost:4000"

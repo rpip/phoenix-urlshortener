@@ -4,8 +4,9 @@ version: '3'
 # Containers we are going to run
 services:
   # Our Phoenix container
-  phoenix:
-    # The build parameters for this container.
+  web:
+    privileged: true
+    restart: always
     build:
       # Here we define that it should build from the current directory
       context: .
@@ -13,7 +14,7 @@ services:
       # Variables to connect to our Postgres server
       PGUSER: postgres
       PGPASSWORD: postgres
-      PGDATABASE: database_name
+      PGDATABASE: postgres
       PGPORT: 5432
       # Hostname of our Postgres container
       PGHOST: db
@@ -24,7 +25,6 @@ services:
       # The db container needs to be started before we start this container
       - db
   db:
-    # We use the predefined Postgres image
     image: postgres:9.6
     environment:
       # Set user/password for Postgres

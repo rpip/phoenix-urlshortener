@@ -13,10 +13,14 @@ COPY . /app
 WORKDIR /app
 
 # Install hex package manager
-RUN mix local.hex --force
+RUN mix local.rebar --force && \
+    mix local.hex --force
 
 # Compile the project
 RUN mix do deps.get, deps.compile
 
 # USER default
-CMD ["/app/entrypoint.sh"]
+RUN ["chmod", "+x", "/app/entrypoint.sh"]
+
+# CMD ["/app/entrypoint.sh"]
+ENTRYPOINT ["bash", "/app/entrypoint.sh"]

@@ -13,9 +13,7 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 ## Docker
 
-BUILD: `./build`
-
-RUN: `./run mix phx.server`
+with docker-compose:  ```sh docker-compose up```
 
 
 ## Intro and background info
