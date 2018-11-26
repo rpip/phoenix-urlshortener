@@ -15,6 +15,7 @@ defmodule Samlinks.Application do
       # Starts a worker by calling: Samlinks.Worker.start_link(arg)
       # {Samlinks.Worker, arg},
       Samlinks.Scheduler,
+      Samlinks.Indexer,
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
