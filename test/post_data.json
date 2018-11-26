@@ -1,0 +1,4 @@
+{
+  "url": "http://example.com/about/index.html?uid=<%token%>&email=<%email%>&city=<%city%>"
+
+}
