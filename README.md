@@ -9,13 +9,20 @@ URL shortening is a technique on the World Wide Web in which a Uniform Resource 
   * Create and migrate your database with `mix ecto.setup`
   * Start Phoenix endpoint with
 
-   `PGDATABASE=samlinks PGUSER=samlinks PGPASSWORD=samlinks mix phx.server`
+   `$ PGDATABASE=samlinks PGUSER=samlinks PGPASSWORD=samlinks mix phx.server`
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 ## Docker
 
-with docker-compose:  `docker-compose up`
+with docker-compose:  `$ docker-compose up`
+
+## Test
+
+With [ab - Apache HTTP server benchmarking tool](https://httpd.apache.org/docs/2.4/programs/ab.html):
+
+`$ ab -p test/post_data.json -T application/json -n 100 -c 10 http://127.0.0.1:4000/api`
+
 
 ## Functional Requirements:
 
