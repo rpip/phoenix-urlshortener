@@ -2,8 +2,6 @@ defmodule Samlinks.Links.Link do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias Samlinks.Hash
-
   schema "links" do
     field :url, :string
     field :slug, :string
@@ -18,7 +16,6 @@ defmodule Samlinks.Links.Link do
     |> cast(attrs, [:url, :slug])
     |> validate_required([:url])
     |> validate_url(:url)
-    |> put_change(:slug, Hash.generate())
     |> unique_constraint(:slug)
   end
 

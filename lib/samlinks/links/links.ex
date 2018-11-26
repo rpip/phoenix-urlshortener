@@ -111,13 +111,12 @@ defmodule Samlinks.Links do
 
   def prunable_links do
     sql = """
-    SELECT * FROM links l
-    WHERE  NOT EXISTS (
-    SELECT
-    FROM tracking t
-    WHERE t.link_id = l.id
-    AND l.inserted_at < NOW() - INTERVAL '30 days'
-    );
+    SELECT l.*
+    FROM links l
+    LEFT JOIN tracking t
+    ON l.id = t.link_id
+    WHERE t.link_id IS NULL
+    AND l.inserted_at > NOW() - INTERVAL '30 days'
     """
     result = SQL.query!(Repo, sql)
     Enum.map(result.rows, &Repo.load(Link, {result.columns, &1}))
