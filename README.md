@@ -22,19 +22,15 @@ With [ab - Apache HTTP server benchmarking tool](https://httpd.apache.org/docs/2
 `$ ab -p test/post_data.json -T application/json -n 100 -c 10 http://127.0.0.1:4000/api`
 
 
-## Functional Requirements:
+```shell
+[dev][yao@moonboots-2:~/samlinks]
+λ curl -d '{"url":"http://example.com/about/index.html?uid=<%token%>&email=<%email%>&city=<%city%>"}' -H "Content-Type: application/json" -X POST http://localhost:4000/api | jq '.'
 
-- [x] Given a URL, our service should generate a shorter and unique alias of it. This is called a short link.
-
-  ```shell
-    [dev][yao@moonboots-2:~/samlinks]
-    λ curl -d '{"url":"http://example.com/about/index.html?uid=<%token%>&email=<%email%>&city=<%city%>"}' -H "Content-Type: application/json" -X POST http://localhost:4000/api | jq '.'
-
-    {
-      "data": {
-        "link": "s.am/jRqXNio",
-        "slug": "jRqXNio",
-        "url": "http://example.com/about/index.html?uid=%3C%25token%25%3E&email=%3C%25email%25%3E&city=%3C%25city%25%3E"
-      }
-    }
-    ```
+{
+  "data": {
+    "link": "s.am/jRqXNio",
+    "slug": "jRqXNio",
+    "url": "http://example.com/about/index.html?uid=%3C%25token%25%3E&email=%3C%25email%25%3E&city=%3C%25city%25%3E"
+  }
+}
+```
